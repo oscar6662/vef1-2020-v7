@@ -8,9 +8,68 @@ const LETTERS = `AÁBDÐEÉFGHIÍJKLMNOÓPRSTUÚVXYÝÞÆÖ`;
  * Byrja forrit.
  */
 function start() {
-  alert('Halló!')
+  let option = prompt('Hvort viltu kóða eða afkóða streng? Skrifaðu „kóða“ eða „afkóða“');
+  if(option == 'kóða'){
+	amounta();
+  }else if(option == 'afkóða'){
+	amountd();
+  }else{
+	  alert('Veit ekki hvaða aðgerð „${input}“ er. Reyndu aftur.')
+	  start();
+  }
+  
 }
-
+function amounta() {
+	let n = prompt('Hversu mikið á að hliðra streng? Gefðu upp heiltölu á bilinu [1, 31]');
+  if(n >=1 && n <=31){
+	worda(n);
+  }else{
+	  alert('${input} er ekki heiltala á bilinu [1, 31]. Reyndu aftur.')
+	  amounta();
+  }
+}
+function amountd() {
+	let n = prompt('Hversu mikið á að hliðra streng? Gefðu upp heiltölu á bilinu [1, 31]');
+  if(n >=1 && n <=31){
+	wordd(n);
+  }else{
+	  alert('${input} er ekki heiltala á bilinu [1, 31]. Reyndu aftur.')
+	  amountd();
+  }
+}
+function worda(n) {
+	var str = prompt('Gefðu upp strenginn sem á að ${action} með hliðrun ${n}:');
+	str = str.toLocaleUpperCase();
+	if(str != null){
+		for(let i = 0;i<str.length;i++){
+			if(LETTERS.includes(str[i])==false){
+				alert('Þú gafst upp stafi sem ekki er hægt að ${action}: ${invalid.join(', ')}. Reyndu aftur.');
+				wordd();
+			}
+		}	  
+		alert(encode(str, n));
+  }else{
+	  alert('Þú gafst ekki upp streng. Reyndu aftur.')
+	worda();
+	  
+  }
+}
+function wordd(n) {
+	var str = prompt('Gefðu upp strenginn sem á að ${action} með hliðrun ${n}:');
+	str = str.toLocaleUpperCase();
+  if(str != null){
+		for(let i = 0;i<str.length;i++){
+			if(LETTERS.includes(str[i])==false){
+				alert('Þú gafst upp stafi sem ekki er hægt að ${action}: ${invalid.join(', ')}. Reyndu aftur.');
+				wordd();
+			}
+		}
+		alert(decode(str, n));
+  }else{
+	  alert('Þú gafst ekki upp streng. Reyndu aftur.')
+	  wordd();
+  }
+}
 // Hér er gott að commenta út til að vinna í encode/decode föllum fyrst og síðan „viðmóti“ forrits
 start();
 
@@ -22,6 +81,11 @@ start();
  * @returns {string} Upprunalegi strengurinn hliðraður um n til hægri
  */
 function encode(str, n) {
+	var result = "";
+	for(let i = 0; i<str.length; i++){
+		result += LETTERS[(LETTERS.indexOf(str[i])+parseInt(n))%32]; 
+	}
+	str=result;
   return str;
 }
 
@@ -33,6 +97,11 @@ function encode(str, n) {
  * @returns {string} Upprunalegi strengurinn hliðraður um n til vinstri
  */
 function decode(str, n) {
+	var result = "";
+	for(let i = 0; i<str.length; i++){
+		result += LETTERS[(LETTERS.indexOf(str[i])-parseInt(n))%32]; 
+	}
+	str=result;
   return str;
 }
 
