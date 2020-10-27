@@ -14,7 +14,7 @@ function start() {
   }else if(option == 'afkóða'){
 	amountd();
   }else{
-	  alert('Veit ekki hvaða aðgerð „${input}“ er. Reyndu aftur.')
+	  alert('Veit ekki hvaða aðgerð ' +${option}+ ' er. Reyndu aftur.')
 	  start();
   }
   
@@ -24,7 +24,7 @@ function amounta() {
   if(n >=1 && n <=31){
 	worda(n);
   }else{
-	  alert('${input} er ekki heiltala á bilinu [1, 31]. Reyndu aftur.')
+	  alert(${n} 'er ekki heiltala á bilinu [1, 31]. Reyndu aftur.')
 	  amounta();
   }
 }
@@ -33,17 +33,17 @@ function amountd() {
   if(n >=1 && n <=31){
 	wordd(n);
   }else{
-	  alert('${input} er ekki heiltala á bilinu [1, 31]. Reyndu aftur.')
+	  alert(${n} 'er ekki heiltala á bilinu [1, 31]. Reyndu aftur.')
 	  amountd();
   }
 }
 function worda(n) {
-	var str = prompt('Gefðu upp strenginn sem á að ${action} með hliðrun ${n}:');
+	var str = prompt('Gefðu upp strenginn sem á að kóða með hliðrun '+ ${n}:);
 	str = str.toLocaleUpperCase();
 	if(str != null){
 		for(let i = 0;i<str.length;i++){
 			if(LETTERS.includes(str[i])==false){
-				alert('Þú gafst upp stafi sem ekki er hægt að ${action}: ${invalid.join(', ')}. Reyndu aftur.');
+				alert('Þú gafst upp stafi sem ekki er hægt að kóða: '+${str[i]}+'. Reyndu aftur.');
 				wordd();
 			}
 		}	  
@@ -55,12 +55,12 @@ function worda(n) {
   }
 }
 function wordd(n) {
-	var str = prompt('Gefðu upp strenginn sem á að ${action} með hliðrun ${n}:');
+	var str = prompt('Gefðu upp strenginn sem á að afkóða með hliðrun '+ ${n}:);
 	str = str.toLocaleUpperCase();
   if(str != null){
 		for(let i = 0;i<str.length;i++){
 			if(LETTERS.includes(str[i])==false){
-				alert('Þú gafst upp stafi sem ekki er hægt að ${action}: ${invalid.join(', ')}. Reyndu aftur.');
+				alert('Þú gafst upp stafi sem ekki er hægt að kóða: '+${str[i]}+'. Reyndu aftur.');
 				wordd();
 			}
 		}
