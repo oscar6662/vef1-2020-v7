@@ -14,17 +14,16 @@ function start() {
   }else if(option == 'afkóða'){
 	amountd();
   }else{
-	  alert('Veit ekki hvaða aðgerð ' +${option}+ ' er. Reyndu aftur.')
+	  alert('Veit ekki hvaða aðgerð ' +option+ ' er. Reyndu aftur.');
 	  start();
   }
-  
 }
 function amounta() {
 	let n = prompt('Hversu mikið á að hliðra streng? Gefðu upp heiltölu á bilinu [1, 31]');
   if(n >=1 && n <=31){
 	worda(n);
   }else{
-	  alert(${n} 'er ekki heiltala á bilinu [1, 31]. Reyndu aftur.')
+	  alert(n +' er ekki heiltala á bilinu [1, 31]. Reyndu aftur.');
 	  amounta();
   }
 }
@@ -33,41 +32,41 @@ function amountd() {
   if(n >=1 && n <=31){
 	wordd(n);
   }else{
-	  alert(${n} 'er ekki heiltala á bilinu [1, 31]. Reyndu aftur.')
+	  alert(n+'er ekki heiltala á bilinu [1, 31]. Reyndu aftur.');
 	  amountd();
   }
 }
 function worda(n) {
-	var str = prompt('Gefðu upp strenginn sem á að kóða með hliðrun '+ ${n}:);
+	var str = prompt('Gefðu upp strenginn sem á að kóða með hliðrun '+ n+':');
 	str = str.toLocaleUpperCase();
-	if(str != null){
+	if(str != ''){
 		for(let i = 0;i<str.length;i++){
 			if(LETTERS.includes(str[i])==false){
-				alert('Þú gafst upp stafi sem ekki er hægt að kóða: '+${str[i]}+'. Reyndu aftur.');
-				worda();
+				alert('Þú gafst upp stafi sem ekki er hægt að kóða: '+str[i]+'. Reyndu aftur.');
+				worda(n);
 			}
 		}	  
 		alert(encode(str, n));
   }else{
-	  alert('Þú gafst ekki upp streng. Reyndu aftur.')
-	worda();
+	  alert('Þú gafst ekki upp streng. Reyndu aftur.');
+	worda(n);
 	  
   }
 }
 function wordd(n) {
-	var str = prompt('Gefðu upp strenginn sem á að afkóða með hliðrun '+ ${n}:);
+	var str = prompt('Gefðu upp strenginn sem á að afkóða með hliðrun '+ n+':');
 	str = str.toLocaleUpperCase();
-  if(str != null){
+  if(str != ''){
 		for(let i = 0;i<str.length;i++){
 			if(LETTERS.includes(str[i])==false){
-				alert('Þú gafst upp stafi sem ekki er hægt að kóða: '+${str[i]}+'. Reyndu aftur.');
-				wordd();
+				alert('Þú gafst upp stafi sem ekki er hægt að kóða: '+str[i]+'. Reyndu aftur.');
+				wordd(n);
 			}
 		}
 		alert(decode(str, n));
   }else{
-	  alert('Þú gafst ekki upp streng. Reyndu aftur.')
-	  wordd();
+	  alert('Þú gafst ekki upp streng. Reyndu aftur.');
+	  wordd(n);
   }
 }
 // Hér er gott að commenta út til að vinna í encode/decode föllum fyrst og síðan „viðmóti“ forrits
