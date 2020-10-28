@@ -44,7 +44,7 @@ function worda(n) {
 		for(let i = 0;i<str.length;i++){
 			if(LETTERS.includes(str[i])==false){
 				alert('Þú gafst upp stafi sem ekki er hægt að kóða: '+${str[i]}+'. Reyndu aftur.');
-				wordd();
+				worda();
 			}
 		}	  
 		alert(encode(str, n));
